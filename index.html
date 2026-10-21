@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matheus Oliveira · Análise de Dados e Business Intelligence</title>
+<meta name="description" content="Portfólio de Matheus Oliveira, analista de dados com experiência em Business Intelligence, Marketing Analytics e Planejamento Comercial.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   CORES E TIPOGRAFIA (altere aqui para mudar o visual todo)
+   ========================================================= */
+:root {
+  --papel: #F5F6F2;
+  --superficie: #FFFFFF;
+  --tinta: #13232B;
+  --suave: #56656C;
+  --linha: #D5DBD6;
+  --dados: #1D6F7A;       /* experiências em Dados e BI */
+  --comercial: #B9822A;   /* planejamento e comercial */
+  --outros: #8A96A0;      /* outras experiências */
+  --formacao: #7A5C8E;    /* formação acadêmica */
+  --fonte: "Schibsted Grotesk", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papel: #0F1A1F; --superficie: #15232A; --tinta: #E6ECEA; --suave: #9AA8AE;
+    --linha: #26363D; --dados: #4FB3BF; --comercial: #D9A54A; --outros: #6E7C85; --formacao: #A98BC0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --papel: #0F1A1F; --superficie: #15232A; --tinta: #E6ECEA; --suave: #9AA8AE;
+  --linha: #26363D; --dados: #4FB3BF; --comercial: #D9A54A; --outros: #6E7C85; --formacao: #A98BC0;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px)); }
+body {
+  margin: 0; background: var(--papel); color: var(--tinta);
+  font-family: var(--fonte); font-size: 1.0625rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--dados); }
+:focus-visible { outline: 3px solid var(--dados); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+/* ---------- Cabeçalho ---------- */
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--papel);
+}
+.topo {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--papel); border-bottom: 1px solid var(--linha);
+}
+.topo .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 4rem; }
+.marca { font-weight: 800; text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.menu { display: flex; gap: clamp(0.9rem, 2.5vw, 1.8rem); overflow-x: auto; font-size: 0.95rem; }
+.menu a { text-decoration: none; color: var(--suave); white-space: nowrap; }
+.menu a:hover { color: var(--tinta); }
+
+/* ---------- Abertura ---------- */
+.abertura { padding-block: clamp(3.5rem, 10vw, 7.5rem) clamp(3rem, 7vw, 5rem); }
+.abertura h1 {
+  margin: 0; font-size: clamp(3rem, 10vw, 7.5rem); font-weight: 800;
+  line-height: 0.92; letter-spacing: -0.045em;
+}
+.abertura h1 span { display: block; color: var(--suave); font-weight: 500; }
+.cargo { margin: 1.75rem 0 0; font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 600; max-width: 34ch; line-height: 1.35; }
+.apresentacao { margin: 1rem 0 0; color: var(--suave); max-width: 60ch; }
+.acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.botao {
+  display: inline-block; padding: 0.7rem 1.2rem; border-radius: 6px;
+  font-weight: 600; text-decoration: none; border: 1.5px solid var(--tinta);
+}
+.botao.cheio { background: var(--tinta); color: var(--papel); }
+.botao.cheio:hover { background: var(--dados); border-color: var(--dados); color: #fff; }
+.botao:not(.cheio):hover { border-color: var(--dados); }
+
+/* ---------- Seções ---------- */
+section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--linha); }
+h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; }
+.intro { margin: 0.75rem 0 0; color: var(--suave); max-width: 62ch; }
+
+/* ---------- Abordagem (sequência real: 3 etapas) ---------- */
+.etapas { list-style: none; padding: 0; margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; counter-reset: etapa; }
+.etapas li { counter-increment: etapa; }
+.etapas li::before {
+  content: counter(etapa); display: block; font-size: 2.6rem; font-weight: 800;
+  line-height: 1; color: var(--dados); margin-bottom: 0.6rem; font-variant-numeric: tabular-nums;
+}
+.etapas h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+.etapas p { margin: 0; color: var(--suave); }
+
+/* ---------- Estudos de caso ---------- */
+.casos { margin-top: 2.5rem; }
+.caso {
+  display: grid; grid-template-columns: 15rem 1fr; gap: 1.5rem 3rem;
+  padding: 2.25rem 0; border-top: 1px solid var(--linha);
+}
+.caso:first-child { border-top: 0; padding-top: 0.5rem; }
+.caso-meta { font-size: 0.95rem; color: var(--suave); }
+.caso-meta strong { display: block; color: var(--tinta); font-size: 1rem; }
+.caso-meta .ferramentas { margin-top: 0.75rem; }
+.caso h3 { margin: 0 0 1rem; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.2; letter-spacing: -0.015em; }
+.caso dl { margin: 0; display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.6rem 1.25rem; }
+.caso dt { font-weight: 600; }
+.caso dd { margin: 0; color: var(--suave); max-width: 62ch; }
+.caso dd.resultado { color: var(--tinta); }
+
+/* ---------- Trajetória (gráfico de Gantt) ---------- */
+.legenda { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 2rem 0 1rem; font-size: 0.9rem; color: var(--suave); padding: 0; list-style: none; }
+.legenda li { display: flex; align-items: center; gap: 0.45rem; }
+.legenda i { width: 0.9rem; height: 0.9rem; border-radius: 3px; display: inline-block; }
+.gantt-rolagem { overflow-x: auto; padding-bottom: 0.5rem; }
+.gantt { min-width: 44rem; }
+.g-eixo, .g-linha { display: grid; grid-template-columns: 15rem 1fr; align-items: center; }
+.g-eixo { font-size: 0.8rem; color: var(--suave); font-variant-numeric: tabular-nums; }
+.g-eixo .anos { position: relative; height: 1.5rem; }
+.g-eixo .anos span { position: absolute; top: 0; transform: translateX(-50%); }
+.g-linha {
+  width: 100%; border: 0; background: none; color: inherit; font: inherit; text-align: left;
+  padding: 0.35rem 0; cursor: pointer; border-radius: 4px;
+}
+.g-linha:hover .g-rotulo strong, .g-linha[aria-pressed="true"] .g-rotulo strong { color: var(--dados); }
+.g-rotulo { padding-right: 1rem; line-height: 1.25; font-size: 0.92rem; }
+.g-rotulo strong { display: block; font-weight: 600; }
+.g-rotulo small { color: var(--suave); font-size: 0.82rem; }
+.g-trilho {
+  position: relative; height: 1.6rem;
+  background-image: repeating-linear-gradient(to right, var(--linha) 0 1px, transparent 1px 12.5%);
+}
+.g-barra {
+  position: absolute; top: 0.25rem; bottom: 0.25rem; min-width: 0.5rem; border-radius: 3px;
+  transform-origin: left center; opacity: 0.85;
+}
+.g-linha[aria-pressed="true"] .g-barra { opacity: 1; box-shadow: 0 0 0 2px var(--papel), 0 0 0 4px currentColor; }
+.g-linha[aria-pressed="true"] { color: var(--tinta); }
+.carregado .g-barra { animation: crescer 0.9s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes crescer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.detalhe {
+  margin-top: 1.75rem; padding: 1.5rem clamp(1.25rem, 3vw, 2rem);
+  background: var(--superficie); border: 1px solid var(--linha); border-radius: 8px;
+  border-left: 5px solid var(--cor-detalhe, var(--dados));
+}
+.detalhe h3 { margin: 0; font-size: 1.3rem; letter-spacing: -0.01em; }
+.detalhe .periodo { margin: 0.25rem 0 0.9rem; color: var(--suave); }
+.detalhe ul { margin: 0; padding-left: 1.2rem; max-width: 70ch; }
+.detalhe li + li { margin-top: 0.35rem; }
+
+/* ---------- Competências ---------- */
+.competencias { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 3rem; margin-top: 2.5rem; }
+.competencias h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+.competencias p { margin: 0; color: var(--suave); }
+
+/* ---------- Formação ---------- */
+.duas-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 4rem; margin-top: 2.5rem; }
+.duas-colunas h3 { margin: 0 0 0.75rem; font-size: 1.05rem; }
+.lista-simples { list-style: none; margin: 0; padding: 0; }
+.lista-simples li { padding: 0.6rem 0; border-top: 1px solid var(--linha); }
+.lista-simples li span { display: block; color: var(--suave); font-size: 0.92rem; }
+
+/* ---------- Contato ---------- */
+.contato p.grande { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin: 1rem 0 0; max-width: 30ch; line-height: 1.2; }
+.contato .acoes { margin-top: 1.75rem; }
+.rodape { padding: 2rem 0 3rem; color: var(--suave); font-size: 0.9rem; border-top: 1px solid var(--linha); }
+
+/* ---------- Telas menores ---------- */
+@media (max-width: 860px) {
+  .etapas, .competencias { grid-template-columns: 1fr 1fr; }
+  .caso { grid-template-columns: 1fr; gap: 1rem; }
+}
+@media (max-width: 600px) {
+  .etapas, .competencias, .duas-colunas { grid-template-columns: 1fr; }
+  .caso dl { grid-template-columns: 1fr; gap: 0.15rem; }
+  .caso dd { margin-bottom: 0.6rem; }
+  .menu a.opcional { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .carregado .g-barra { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== CABEÇALHO ===================== -->
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio">Matheus Oliveira</a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#casos">Casos</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#competencias" class="opcional">Competências</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+<!-- ===================== ABERTURA ===================== -->
+<div class="wrap abertura">
+  <h1>Matheus<span>Oliveira</span></h1>
+  <p class="cargo">Analista de Dados com foco em Business Intelligence, Marketing Analytics e Planejamento Comercial.</p>
+  <p class="apresentacao">Construo análises, indicadores e automações que conectam dados, processos e estratégia de negócio. Para mim, o valor dos dados está em fundamentar decisões com critério e confiabilidade, e não apenas em produzir relatórios.</p>
+  <div class="acoes">
+    <a class="botao cheio" href="#casos">Ver estudos de caso</a>
+    <a class="botao" href="mailto:olsmatheus@gmail.com">Enviar e-mail</a>
+    <a class="botao" href="https://www.linkedin.com/in/matheusoliveira-adm" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
+
+<!-- ===================== ABORDAGEM ===================== -->
+<section id="abordagem">
+  <div class="wrap">
+    <h2>Como trabalho</h2>
+    <p class="intro">Toda análise começa antes da primeira consulta SQL.</p>
+    <ol class="etapas">
+      <li>
+        <h3>Entender o problema de negócio</h3>
+        <p>Converso com as áreas envolvidas para saber qual decisão a análise precisa apoiar e como o resultado será usado.</p>
+      </li>
+      <li>
+        <h3>Fazer as perguntas certas</h3>
+        <p>Traduzo o problema em hipóteses e indicadores mensuráveis, e preparo bases confiáveis com SQL e Power Query.</p>
+      </li>
+      <li>
+        <h3>Sustentar cada recomendação</h3>
+        <p>Aplico testes estatísticos, construo dashboards e apresento os resultados com data storytelling para a liderança.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== ESTUDOS DE CASO =====================
+     Para adicionar um caso, copie um bloco <article class="caso"> inteiro e altere os textos.
+     Dica: inclua um link para o dashboard, repositório ou imagem, sem expor dados confidenciais.
+-->
+<section id="casos">
+  <div class="wrap">
+    <h2>Estudos de caso</h2>
+    <p class="intro">Projetos reais descritos sem dados confidenciais das empresas. Os números divulgados são apenas os que podem ser tornados públicos.</p>
+
+    <div class="casos">
+
+      <article class="caso">
+        <div class="caso-meta">
+          <strong>Grupo LLE</strong>
+          Marketing Analytics, 2025–2026
+          <p class="ferramentas">SQL (PostgreSQL), Power Query, Excel, estatística, CRM via WhatsApp</p>
+        </div>
+        <div>
+          <h3>Mensuração de campanhas e disparos de CRM</h3>
+          <dl>
+            <dt>Desafio</dt>
+            <dd>Saber quais campanhas e disparos de WhatsApp realmente geravam vendas e retorno sobre o investimento.</dd>
+            <dt>Abordagem</dt>
+            <dd>Segmentação das bases de clientes, mensuração do funil de alcance, engajamento e conversão, e testes A/B com testes de hipóteses para comparar mensagens e públicos.</dd>
+            <dt>Resultado</dt>
+            <dd class="resultado">Relatórios de rentabilidade e ROI por ação, usados para otimizar a performance das campanhas seguintes.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="caso">
+        <div class="caso-meta">
+          <strong>Haytek</strong>
+          Planejamento Comercial, 2025
+          <p class="ferramentas">TOTVS Protheus, Power Query, Power Pivot, Looker Studio</p>
+        </div>
+        <div>
+          <h3>Forecast anual e desdobramento de metas</h3>
+          <dl>
+            <dt>Desafio</dt>
+            <dd>Planejar as vendas do ano considerando histórico, estoque e capacidade de laboratório.</dd>
+            <dt>Abordagem</dt>
+            <dd>Modelo de previsão a partir do histórico de faturamento e volume, com desdobramento das metas por filial, gerente e estado, e acompanhamento de previsto x realizado das despesas comerciais.</dd>
+            <dt>Resultado</dt>
+            <dd class="resultado">Metas claras para cada nível da operação e dashboards gerenciais para o acompanhamento da gestão.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="caso">
+        <div class="caso-meta">
+          <strong>Grupo Pratica</strong>
+          Business Intelligence, 2023–2025
+          <p class="ferramentas">Power BI, Power Query, Excel</p>
+        </div>
+        <div>
+          <h3>Dashboard de satisfação do cliente</h3>
+          <dl>
+            <dt>Desafio</dt>
+            <dd>Entender os motivos de insatisfação do principal cliente e agir sobre eles rapidamente.</dd>
+            <dt>Abordagem</dt>
+            <dd>Consolidação das avaliações em um dashboard em Power BI, com análise dos pontos críticos e apoio à construção de um plano de ação.</dd>
+            <dt>Resultado</dt>
+            <dd class="resultado">Aumento de aproximadamente 10% na satisfação do principal cliente em um mês.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="caso">
+        <div class="caso-meta">
+          <strong>Grupo LLE</strong>
+          Gestão de produtos, 2025–2026
+          <p class="ferramentas">SQL, séries temporais, Excel, PowerPoint</p>
+        </div>
+        <div>
+          <h3>Ciclo de vida de novos produtos</h3>
+          <dl>
+            <dt>Desafio</dt>
+            <dd>Avaliar se os produtos recém-lançados estavam amadurecendo como o esperado.</dd>
+            <dt>Abordagem</dt>
+            <dd>Análise de séries temporais de vendas ao longo do Ciclo de Vida do Produto, comparando marcas, vendedores e canais.</dd>
+            <dt>Resultado</dt>
+            <dd class="resultado">Diagnóstico de maturidade de cada item, embasando decisões de posicionamento de mercado.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="caso">
+        <div class="caso-meta">
+          <strong>Grupo LLE</strong>
+          Automação, 2025–2026
+          <p class="ferramentas">Claude (IA generativa), engenharia de prompts, Power Query</p>
+        </div>
+        <div>
+          <h3>Automação de relatórios com IA generativa</h3>
+          <dl>
+            <dt>Desafio</dt>
+            <dd>Reduzir o tempo gasto em tarefas manuais e repetitivas de preparação de bases e relatórios.</dd>
+            <dt>Abordagem</dt>
+            <dd>Uso estruturado do Claude, com projetos, artefatos e prompts padronizados para gerar e segmentar bases de clientes, montar relatórios e apresentações e revisar análises.</dd>
+            <dt>Resultado</dt>
+            <dd class="resultado">Entregas recorrentes padronizadas, com menos processamento manual e mais tempo para a análise.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- MODELO DE NOVO CASO (remova os marcadores de comentário para usar)
+      <article class="caso">
+        <div class="caso-meta">
+          <strong>Nome da empresa ou projeto pessoal</strong>
+          Área, ano
+          <p class="ferramentas">Ferramentas usadas</p>
+        </div>
+        <div>
+          <h3>Título do caso</h3>
+          <dl>
+            <dt>Desafio</dt><dd>Qual problema precisava ser resolvido.</dd>
+            <dt>Abordagem</dt><dd>O que foi feito e como.</dd>
+            <dt>Resultado</dt><dd class="resultado">O que mudou. <a href="https://link-do-projeto">Ver projeto</a></dd>
+          </dl>
+        </div>
+      </article>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRAJETÓRIA =====================
+     O gráfico é montado a partir da lista "trajetoria" no script no fim da página.
+     Para incluir ou alterar uma experiência, edite somente essa lista.
+-->
+<section id="trajetoria">
+  <div class="wrap">
+    <h2>Trajetória</h2>
+    <p class="intro">Do Trade Marketing e do Planejamento Comercial até a área de Dados. Selecione uma linha para ver os detalhes.</p>
+    <ul class="legenda">
+      <li><i style="background:var(--dados)"></i>Dados e BI</li>
+      <li><i style="background:var(--comercial)"></i>Planejamento e comercial</li>
+      <li><i style="background:var(--outros)"></i>Outras experiências</li>
+      <li><i style="background:var(--formacao)"></i>Formação</li>
+    </ul>
+    <div class="gantt-rolagem">
+      <div class="gantt" id="gantt"></div>
+    </div>
+    <div class="detalhe" id="detalhe" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ===================== COMPETÊNCIAS ===================== -->
+<section id="competencias">
+  <div class="wrap">
+    <h2>Competências</h2>
+    <div class="competencias">
+      <div><h3>Dados e ETL</h3><p>SQL (PostgreSQL), Power Query, Power Pivot, modelagem de dados e Excel avançado.</p></div>
+      <div><h3>BI e visualização</h3><p>Power BI (DAX), Looker Studio, indicadores, data storytelling e apresentações executivas.</p></div>
+      <div><h3>Planejamento</h3><p>Forecast de vendas, orçamento (budget), S&amp;OP, desdobramento de metas e previsto x realizado.</p></div>
+      <div><h3>Análise e marketing</h3><p>Estatística aplicada, testes A/B e de hipóteses, séries temporais, funil de conversão, rentabilidade e ROI.</p></div>
+      <div><h3>IA e automação</h3><p>Claude (engenharia de prompts, projetos e artefatos) e automação de relatórios e bases.</p></div>
+      <div><h3>Sistemas e processos</h3><p>TOTVS Protheus, TOTVS RM, Sankhya, CRM (Agendor, Omni Chat) e BPMN (Bizagi Modeler). Em desenvolvimento: Python.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FORMAÇÃO ===================== -->
+<section id="formacao">
+  <div class="wrap">
+    <h2>Formação e certificações</h2>
+    <div class="duas-colunas">
+      <div>
+        <h3>Formação acadêmica</h3>
+        <ul class="lista-simples">
+          <li>Bacharelado em Administração<span>Universidade Paulista (UNIP), 2019 a 2022</span></li>
+        </ul>
+        <h3 style="margin-top:2rem">Idiomas</h3>
+        <ul class="lista-simples">
+          <li>Português<span>Nativo</span></li>
+          <li>Inglês<span>Avançado</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cursos e certificações</h3>
+        <ul class="lista-simples">
+          <li>Excel para Análise de Dados<span>Preditiva</span></li>
+          <li>Curso Master Power BI, de A a Z<span>Udemy</span></li>
+          <li>Data Analytics<span>Coderhouse</span></li>
+          <li>Master DAX, Power BI orientado a projeto<span>Udemy</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTATO ===================== -->
+<section id="contato" class="contato">
+  <div class="wrap">
+    <h2>Contato</h2>
+    <p class="grande">Vamos conversar sobre como dados podem apoiar as decisões da sua equipe.</p>
+    <p class="intro">Duque de Caxias, Rio de Janeiro</p>
+    <div class="acoes">
+      <a class="botao cheio" href="mailto:olsmatheus@gmail.com">olsmatheus@gmail.com</a>
+      <a class="botao" href="https://www.linkedin.com/in/matheusoliveira-adm" target="_blank" rel="noopener">LinkedIn</a>
+      <!-- Para oferecer o currículo, coloque o arquivo "curriculo.pdf" na mesma pasta e remova os marcadores de comentário:
+      <a class="botao" href="curriculo.pdf" download>Baixar currículo</a>
+      -->
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="wrap">© <span id="ano"></span> Matheus Oliveira</div>
+</footer>
+
+<script>
+/* =========================================================
+   DADOS DA TRAJETÓRIA
+   area: "dados", "comercial", "outros" ou "formacao"
+   inicio e fim no formato "AAAA-MM"
+   ========================================================= */
+const trajetoria = [
+  { empresa: "Grupo LLE", cargo: "Analista de Dados de Marketing", area: "dados", inicio: "2025-11", fim: "2026-09",
+    destaques: [
+      "Extração e modelagem de grandes volumes de dados via SQL (PostgreSQL) e automação de ETL com Power Query.",
+      "Mensuração de campanhas, disparos de CRM via WhatsApp e ações promocionais: alcance, engajamento, conversão, rentabilidade e ROI.",
+      "Testes A/B e testes de hipóteses para validar cenários e otimizar campanhas.",
+      "Modelagem de metas mensais para campanhas internas de marcas, com acompanhamento de meta x realizado.",
+      "Análise de novos produtos ao longo do Ciclo de Vida do Produto, com séries temporais de vendas.",
+      "Automação de bases, relatórios e apresentações com IA generativa (Claude)."
+    ] },
+  { empresa: "Grupo Pratica", cargo: "Consultor de Dados", area: "dados", inicio: "2025-05", fim: "2025-11",
+    destaques: [
+      "Processos de ETL no Power Query, dashboards em Power BI e relatórios analíticos em Excel.",
+      "Relatórios financeiros, análises de caixa e direcionamento das análises de NPS (satisfação e lealdade dos clientes).",
+      "Apresentação de análises e recomendações diretamente às lideranças."
+    ] },
+  { empresa: "Haytek", cargo: "Assistente de Planejamento Comercial e Dados", area: "comercial", inicio: "2025-05", fim: "2025-10",
+    destaques: [
+      "Forecast anual de vendas com desdobramento de metas por filial, gerente e estado.",
+      "Orçamento do setor comercial e acompanhamento de previsto x realizado das despesas.",
+      "Dados do TOTVS Protheus tratados em Power Query e Power Pivot, com dashboards no Looker Studio.",
+      "Apresentações executivas para reuniões estratégicas e convenções de vendas."
+    ] },
+  { empresa: "Grupo Pratica", cargo: "Assistente de Dados", area: "dados", inicio: "2023-08", fim: "2025-04",
+    destaques: [
+      "Dashboards em Power BI para Departamento Pessoal, Recursos Humanos, Financeiro e Logística.",
+      "Dashboard de satisfação do cliente que contribuiu para um aumento de aproximadamente 10% na satisfação do principal cliente em um mês.",
+      "Relatórios financeiros, análises de caixa e orçamentos por unidade.",
+      "Mapeamento de processos em BPMN (Bizagi Modeler) e apoio à implementação da ISO 9001."
+    ] },
+  { empresa: "Grupo Pratica", cargo: "Assistente Comercial", area: "comercial", inicio: "2023-05", fim: "2023-07",
+    destaques: [
+      "Propostas comerciais e acompanhamento da carteira de clientes no CRM Agendor.",
+      "Simulador orçamentário em Excel para agilizar a composição das propostas."
+    ] },
+  { empresa: "Supplymarine", cargo: "Assistente Comercial", area: "comercial", inicio: "2022-12", fim: "2023-05",
+    destaques: [
+      "Controle de embarques de operações offshore para apuração da cobrança.",
+      "Fechamento de propostas comerciais e boletins de medição.",
+      "Relatórios em Excel de atividades comerciais e faturamento."
+    ] },
+  { empresa: "Limppano", cargo: "Estagiário de Planejamento Comercial", area: "comercial", inicio: "2021-10", fim: "2022-12",
+    destaques: [
+      "Relatórios e dashboards em Power BI de previsto x realizado e meta x realizado da equipe de vendas.",
+      "Planilha de metas trimestrais, com desdobramento em valor, volume e unidades.",
+      "Apoio ao orçamento anual e ao S&OP (planejamento integrado de vendas e operações).",
+      "Apuração de premiações e elaboração do sumário executivo apresentado ao Conselho."
+    ] },
+  { empresa: "Limppano", cargo: "Estagiário de Trade Marketing", area: "comercial", inicio: "2021-04", fim: "2021-10",
+    destaques: [
+      "Apuração mensal de verbas comerciais com grandes redes de clientes e de comissões de representantes.",
+      "Controle de despesas da equipe de vendas e lançamentos nos ERPs TOTVS RM e Sankhya."
+    ] },
+  { empresa: "Agillicred", cargo: "Correspondente bancário", area: "outros", inicio: "2020-12", fim: "2021-03",
+    destaques: [ "Venda de crédito consignado, análise de crédito e negociação de condições." ] },
+  { empresa: "João Barbosa Advogados", cargo: "Estagiário jurídico-administrativo", area: "outros", inicio: "2019-09", fim: "2020-12",
+    destaques: [ "Cadastro e controle de sinistros judiciais em sistema e em planilhas Excel." ] },
+  { empresa: "Universidade Paulista", cargo: "Bacharelado em Administração", area: "formacao", inicio: "2019-03", fim: "2022-12",
+    destaques: [ "Formação em gestão, que fundamenta a leitura de negócio por trás de cada análise." ] }
+];
+
+/* Período exibido no gráfico */
+const ANO_INICIAL = 2019, ANO_FINAL = 2027;
+
+/* ---------- A partir daqui, não é preciso editar ---------- */
+const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const cores = { dados: "var(--dados)", comercial: "var(--comercial)", outros: "var(--outros)", formacao: "var(--formacao)" };
+const indice = s => { const [a, m] = s.split("-").map(Number); return a * 12 + (m - 1); };
+const formatar = s => { const [a, m] = s.split("-").map(Number); return MESES[m - 1] + "/" + a; };
+function duracao(inicio, fim) {
+  const n = indice(fim) - indice(inicio) + 1, anos = Math.floor(n / 12), meses = n % 12, partes = [];
+  if (anos) partes.push(anos + (anos === 1 ? " ano" : " anos"));
+  if (meses) partes.push(meses + (meses === 1 ? " mês" : " meses"));
+  return partes.join(" e ");
+}
+
+const total = (ANO_FINAL - ANO_INICIAL) * 12, base = ANO_INICIAL * 12;
+const gantt = document.getElementById("gantt"), detalhe = document.getElementById("detalhe");
+
+let eixo = '<div class="g-eixo" aria-hidden="true"><span></span><div class="anos">';
+for (let a = ANO_INICIAL; a < ANO_FINAL; a++) {
+  eixo += '<span style="left:' + ((a - ANO_INICIAL) * 12 + 6) / total * 100 + '%">' + a + '</span>';
+}
+gantt.innerHTML = eixo + "</div></div>";
+
+trajetoria.forEach((item, i) => {
+  const esquerda = (indice(item.inicio) - base) / total * 100;
+  const largura = (indice(item.fim) + 1 - indice(item.inicio)) / total * 100;
+  const linha = document.createElement("button");
+  linha.type = "button";
+  linha.className = "g-linha";
+  linha.style.color = cores[item.area];
+  linha.setAttribute("aria-pressed", "false");
+  linha.setAttribute("aria-label", item.cargo + ", " + item.empresa + ", " + formatar(item.inicio) + " a " + formatar(item.fim));
+  linha.innerHTML =
+    '<span class="g-rotulo"><strong style="color:var(--tinta)">' + item.empresa + '</strong><small>' + item.cargo + '</small></span>' +
+    '<span class="g-trilho"><span class="g-barra" style="left:' + esquerda + '%;width:' + largura + '%;background:' + cores[item.area] + ';animation-delay:' + (i * 60) + 'ms"></span></span>';
+  linha.addEventListener("click", () => selecionar(i));
+  gantt.appendChild(linha);
+});
+
+function selecionar(i) {
+  const item = trajetoria[i];
+  gantt.querySelectorAll(".g-linha").forEach((b, j) => {
+    b.setAttribute("aria-pressed", String(j === i));
+    b.querySelector("strong").style.color = j === i ? cores[item.area] : "var(--tinta)";
+  });
+  detalhe.style.setProperty("--cor-detalhe", cores[item.area]);
+  detalhe.innerHTML =
+    "<h3>" + item.cargo + "</h3>" +
+    '<p class="periodo">' + item.empresa + ", de " + formatar(item.inicio) + " a " + formatar(item.fim) + " (" + duracao(item.inicio, item.fim) + ")</p>" +
+    "<ul>" + item.destaques.map(d => "<li>" + d + "</li>").join("") + "</ul>";
+}
+
+selecionar(0);
+requestAnimationFrame(() => document.body.classList.add("carregado"));
+document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
