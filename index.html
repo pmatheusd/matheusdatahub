@@ -20,10 +20,9 @@
   --tinta: #13232B;
   --suave: #56656C;
   --linha: #D5DBD6;
-  --dados: #1D6F7A;       /* experiências em Dados e BI */
-  --comercial: #B9822A;   /* planejamento e comercial */
-  --outros: #8A96A0;      /* outras experiências */
-  --formacao: #7A5C8E;    /* formação acadêmica */
+  --dados: #1D6F7A;       /* Dados e BI */
+  --comercial: #B9822A;   /* Planejamento comercial */
+  --marketing: #9A4F6B;   /* Marketing */
   --fonte: "Schibsted Grotesk", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   color-scheme: light;
   box-sizing: border-box;
@@ -33,13 +32,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --papel: #0F1A1F; --superficie: #15232A; --tinta: #E6ECEA; --suave: #9AA8AE;
-    --linha: #26363D; --dados: #4FB3BF; --comercial: #D9A54A; --outros: #6E7C85; --formacao: #A98BC0;
+    --linha: #26363D; --dados: #4FB3BF; --comercial: #D9A54A; --marketing: #D088A3;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --papel: #0F1A1F; --superficie: #15232A; --tinta: #E6ECEA; --suave: #9AA8AE;
-  --linha: #26363D; --dados: #4FB3BF; --comercial: #D9A54A; --outros: #6E7C85; --formacao: #A98BC0;
+  --linha: #26363D; --dados: #4FB3BF; --comercial: #D9A54A; --marketing: #D088A3;
   color-scheme: dark;
 }
 
@@ -50,12 +49,12 @@ body {
   font-family: var(--fonte); font-size: 1.0625rem; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-img { max-width: 100%; }
+img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--dados); }
 :focus-visible { outline: 3px solid var(--dados); outline-offset: 3px; border-radius: 2px; }
 
-.wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.wrap { max-width: 72rem; margin: 0 auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
 
 /* ---------- Cabeçalho ---------- */
 body::before {
@@ -81,6 +80,8 @@ body::before {
 .abertura h1 span { display: block; color: var(--suave); font-weight: 500; }
 .cargo { margin: 1.75rem 0 0; font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 600; max-width: 34ch; line-height: 1.35; }
 .apresentacao { margin: 1rem 0 0; color: var(--suave); max-width: 60ch; }
+.disponivel { margin: 1.25rem 0 0; display: flex; align-items: center; gap: 0.55rem; font-weight: 500; }
+.disponivel::before { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--dados); flex: none; }
 .acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 .botao {
   display: inline-block; padding: 0.7rem 1.2rem; border-radius: 6px;
@@ -91,7 +92,7 @@ body::before {
 .botao:not(.cheio):hover { border-color: var(--dados); }
 
 /* ---------- Seções ---------- */
-section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--linha); }
+section { padding-block: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--linha); }
 h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; }
 .intro { margin: 0.75rem 0 0; color: var(--suave); max-width: 62ch; }
 
@@ -105,62 +106,67 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
 .etapas h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
 .etapas p { margin: 0; color: var(--suave); }
 
-/* ---------- Estudos de caso ---------- */
-.casos { margin-top: 2.5rem; }
-.caso {
-  display: grid; grid-template-columns: 15rem 1fr; gap: 1.5rem 3rem;
-  padding: 2.25rem 0; border-top: 1px solid var(--linha);
+/* ---------- Projetos ---------- */
+.filtros { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+.filtros button {
+  font: inherit; font-size: 0.95rem; padding: 0.4rem 0.95rem; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--suave); border: 1px solid var(--linha);
 }
-.caso:first-child { border-top: 0; padding-top: 0.5rem; }
-.caso-meta { font-size: 0.95rem; color: var(--suave); }
-.caso-meta strong { display: block; color: var(--tinta); font-size: 1rem; }
-.caso-meta .ferramentas { margin-top: 0.75rem; }
-.caso h3 { margin: 0 0 1rem; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.2; letter-spacing: -0.015em; }
-.caso dl { margin: 0; display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.6rem 1.25rem; }
-.caso dt { font-weight: 600; }
-.caso dd { margin: 0; color: var(--suave); max-width: 62ch; }
-.caso dd.resultado { color: var(--tinta); }
+.filtros button:hover { color: var(--tinta); border-color: var(--suave); }
+.filtros button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+.projetos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3rem; margin-top: 2rem; }
+.projeto { border-top: 2px solid var(--tinta); padding-top: 1.1rem; }
+.projeto .imagem { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; border: 1px solid var(--linha); border-radius: 4px; margin-bottom: 1rem; background: var(--superficie); }
+.projeto .tipo { margin: 0; font-size: 0.9rem; color: var(--suave); }
+.projeto h3 { margin: 0.2rem 0 0.5rem; font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.01em; }
+.projeto p { margin: 0; color: var(--suave); }
+.projeto .ferramentas { margin-top: 0.6rem; font-size: 0.92rem; }
+.projeto .abrir { display: inline-block; margin-top: 0.9rem; font-weight: 600; color: var(--dados); }
+.vazio {
+  grid-column: 1 / -1; padding: 2rem clamp(1.25rem, 3vw, 2rem); border: 1px dashed var(--linha);
+  border-radius: 8px; background: var(--superficie);
+}
+.vazio h3 { margin: 0 0 0.35rem; font-size: 1.15rem; }
+.vazio p { margin: 0; color: var(--suave); max-width: 60ch; }
+.vazio .tipos { margin-top: 0.9rem; color: var(--tinta); }
+.links-externos { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-/* ---------- Trajetória (gráfico de Gantt) ---------- */
-.legenda { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 2rem 0 1rem; font-size: 0.9rem; color: var(--suave); padding: 0; list-style: none; }
+/* ---------- Trajetória (linha do tempo) ---------- */
+.legenda { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 2rem 0 0; font-size: 0.9rem; color: var(--suave); padding: 0; list-style: none; }
 .legenda li { display: flex; align-items: center; gap: 0.45rem; }
-.legenda i { width: 0.9rem; height: 0.9rem; border-radius: 3px; display: inline-block; }
-.gantt-rolagem { overflow-x: auto; padding-bottom: 0.5rem; }
-.gantt { min-width: 44rem; }
-.g-eixo, .g-linha { display: grid; grid-template-columns: 15rem 1fr; align-items: center; }
-.g-eixo { font-size: 0.8rem; color: var(--suave); font-variant-numeric: tabular-nums; }
-.g-eixo .anos { position: relative; height: 1.5rem; }
-.g-eixo .anos span { position: absolute; top: 0; transform: translateX(-50%); }
-.g-linha {
-  width: 100%; border: 0; background: none; color: inherit; font: inherit; text-align: left;
-  padding: 0.35rem 0; cursor: pointer; border-radius: 4px;
-}
-.g-linha:hover .g-rotulo strong, .g-linha[aria-pressed="true"] .g-rotulo strong { color: var(--dados); }
-.g-rotulo { padding-right: 1rem; line-height: 1.25; font-size: 0.92rem; }
-.g-rotulo strong { display: block; font-weight: 600; }
-.g-rotulo small { color: var(--suave); font-size: 0.82rem; }
-.g-trilho {
-  position: relative; height: 1.6rem;
-  background-image: repeating-linear-gradient(to right, var(--linha) 0 1px, transparent 1px 12.5%);
-}
-.g-barra {
-  position: absolute; top: 0.25rem; bottom: 0.25rem; min-width: 0.5rem; border-radius: 3px;
-  transform-origin: left center; opacity: 0.85;
-}
-.g-linha[aria-pressed="true"] .g-barra { opacity: 1; box-shadow: 0 0 0 2px var(--papel), 0 0 0 4px currentColor; }
-.g-linha[aria-pressed="true"] { color: var(--tinta); }
-.carregado .g-barra { animation: crescer 0.9s cubic-bezier(.2,.7,.2,1) both; }
-@keyframes crescer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.legenda i { width: 0.75rem; height: 0.75rem; border-radius: 50%; display: inline-block; }
+.linha-tempo { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.marco { display: grid; grid-template-columns: 11.5rem 2rem 1fr; }
+.marco .quando strong { white-space: nowrap; }
+.marco .quando { padding: 0.15rem 1rem 0 0; text-align: right; font-variant-numeric: tabular-nums; }
+.marco .quando strong { display: block; font-weight: 600; }
+.marco .quando span { color: var(--suave); font-size: 0.9rem; }
+.marco .eixo { position: relative; display: flex; justify-content: center; }
+.marco .eixo::before { content: ""; position: absolute; top: 0; bottom: 0; width: 2px; background: var(--linha); }
+.marco:first-child .eixo::before { top: 0.55rem; }
+.marco:last-child .eixo::before { bottom: auto; height: 0.55rem; }
+.marco .ponto { position: relative; margin-top: 0.35rem; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: var(--cor); box-shadow: 0 0 0 4px var(--papel); }
+.marco .conteudo { padding: 0 0 3rem 1rem; }
+.marco:last-child .conteudo { padding-bottom: 0; }
+.marco .area { margin: 0; font-size: 0.9rem; color: var(--cor); font-weight: 600; }
+.marco h3 { margin: 0.1rem 0 0; font-size: clamp(1.2rem, 2.2vw, 1.45rem); line-height: 1.25; letter-spacing: -0.015em; }
+.marco .empresa { margin: 0.1rem 0 0.75rem; color: var(--suave); }
+.marco ul { margin: 0; padding-left: 1.2rem; max-width: 68ch; }
+.marco li + li { margin-top: 0.3rem; }
 
-.detalhe {
-  margin-top: 1.75rem; padding: 1.5rem clamp(1.25rem, 3vw, 2rem);
-  background: var(--superficie); border: 1px solid var(--linha); border-radius: 8px;
-  border-left: 5px solid var(--cor-detalhe, var(--dados));
+.caso { margin-top: 1rem; border: 1px solid var(--linha); border-radius: 8px; background: var(--superficie); max-width: 46rem; }
+.caso summary {
+  cursor: pointer; padding: 0.85rem 1.1rem; font-weight: 600; list-style: none;
+  display: flex; justify-content: space-between; gap: 1rem; align-items: center;
 }
-.detalhe h3 { margin: 0; font-size: 1.3rem; letter-spacing: -0.01em; }
-.detalhe .periodo { margin: 0.25rem 0 0.9rem; color: var(--suave); }
-.detalhe ul { margin: 0; padding-left: 1.2rem; max-width: 70ch; }
-.detalhe li + li { margin-top: 0.35rem; }
+.caso summary::-webkit-details-marker { display: none; }
+.caso summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--cor); }
+.caso[open] summary::after { content: "−"; }
+.caso[open] summary { border-bottom: 1px solid var(--linha); }
+.caso dl { margin: 0; padding: 1rem 1.1rem 1.15rem; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.5rem 1rem; }
+.caso dt { font-weight: 600; }
+.caso dd { margin: 0; color: var(--suave); }
+.caso dd.resultado { color: var(--tinta); }
 
 /* ---------- Competências ---------- */
 .competencias { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 3rem; margin-top: 2.5rem; }
@@ -176,24 +182,35 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
 
 /* ---------- Contato ---------- */
 .contato p.grande { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin: 1rem 0 0; max-width: 30ch; line-height: 1.2; }
-.contato .acoes { margin-top: 1.75rem; }
-.rodape { padding: 2rem 0 3rem; color: var(--suave); font-size: 0.9rem; border-top: 1px solid var(--linha); }
+.caminhos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.25rem; }
+.caminho { padding: 1.5rem clamp(1.25rem, 3vw, 1.75rem); border: 1px solid var(--linha); border-radius: 8px; background: var(--superficie); display: flex; flex-direction: column; }
+.caminho h3 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+.caminho p { margin: 0 0 1.25rem; color: var(--suave); flex: 1; }
+.caminho .botao { align-self: flex-start; }
+.canais { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; color: var(--suave); }
+.canais a { color: var(--tinta); }
+.rodape { padding-block: 2rem 3rem; color: var(--suave); font-size: 0.9rem; border-top: 1px solid var(--linha); }
 
 /* ---------- Telas menores ---------- */
 @media (max-width: 860px) {
   .etapas, .competencias { grid-template-columns: 1fr 1fr; }
-  .caso { grid-template-columns: 1fr; gap: 1rem; }
+  .projetos { grid-template-columns: 1fr; }
 }
-@media (max-width: 600px) {
-  .etapas, .competencias, .duas-colunas { grid-template-columns: 1fr; }
-  .caso dl { grid-template-columns: 1fr; gap: 0.15rem; }
+@media (max-width: 640px) {
+  .etapas, .competencias, .duas-colunas, .caminhos { grid-template-columns: 1fr; }
+  .marco { grid-template-columns: 1.5rem 1fr; }
+  .marco .quando { grid-column: 2; grid-row: 1; text-align: left; padding: 0 0 0.4rem 0.75rem; }
+  .marco .quando strong, .marco .quando span { display: inline; }
+  .marco .quando span::before { content: ", "; }
+  .marco .eixo { grid-column: 1; grid-row: 1 / span 2; }
+  .marco .conteudo { grid-column: 2; padding-left: 0.75rem; }
+  .caso dl { grid-template-columns: 1fr; gap: 0.1rem; }
   .caso dd { margin-bottom: 0.6rem; }
   .menu a.opcional { display: none; }
+  .menu { gap: 0.85rem; font-size: 0.9rem; }
+  .marca .sobrenome { display: none; }
 }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .carregado .g-barra { animation: none; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -201,9 +218,9 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
 <!-- ===================== CABEÇALHO ===================== -->
 <header class="topo">
   <div class="wrap">
-    <a class="marca" href="#inicio">Matheus Oliveira</a>
+    <a class="marca" href="#inicio">Matheus<span class="sobrenome"> Oliveira</span></a>
     <nav class="menu" aria-label="Seções">
-      <a href="#casos">Casos</a>
+      <a href="#projetos">Projetos</a>
       <a href="#trajetoria">Trajetória</a>
       <a href="#competencias" class="opcional">Competências</a>
       <a href="#contato">Contato</a>
@@ -218,10 +235,11 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
   <h1>Matheus<span>Oliveira</span></h1>
   <p class="cargo">Analista de Dados com foco em Business Intelligence, Marketing Analytics e Planejamento Comercial.</p>
   <p class="apresentacao">Construo análises, indicadores e automações que conectam dados, processos e estratégia de negócio. Para mim, o valor dos dados está em fundamentar decisões com critério e confiabilidade, e não apenas em produzir relatórios.</p>
+  <p class="disponivel">Disponível para vagas CLT e projetos como PJ</p>
   <div class="acoes">
-    <a class="botao cheio" href="#casos">Ver estudos de caso</a>
-    <a class="botao" href="mailto:olsmatheus@gmail.com">Enviar e-mail</a>
-    <a class="botao" href="https://www.linkedin.com/in/matheusoliveira-adm" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="botao cheio" href="#trajetoria">Ver trajetória</a>
+    <a class="botao" href="#projetos">Ver projetos</a>
+    <a class="botao" href="#contato">Entrar em contato</a>
   </div>
 </div>
 
@@ -247,152 +265,34 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
   </div>
 </section>
 
-<!-- ===================== ESTUDOS DE CASO =====================
-     Para adicionar um caso, copie um bloco <article class="caso"> inteiro e altere os textos.
-     Dica: inclua um link para o dashboard, repositório ou imagem, sem expor dados confidenciais.
+<!-- ===================== PROJETOS =====================
+     Os projetos são montados a partir da lista "projetos" no script no fim da página.
+     Enquanto a lista estiver vazia, aparece uma mensagem de "em produção".
 -->
-<section id="casos">
+<section id="projetos">
   <div class="wrap">
-    <h2>Estudos de caso</h2>
-    <p class="intro">Projetos reais descritos sem dados confidenciais das empresas. Os números divulgados são apenas os que podem ser tornados públicos.</p>
-
-    <div class="casos">
-
-      <article class="caso">
-        <div class="caso-meta">
-          <strong>Grupo LLE</strong>
-          Marketing Analytics, 2025–2026
-          <p class="ferramentas">SQL (PostgreSQL), Power Query, Excel, estatística, CRM via WhatsApp</p>
-        </div>
-        <div>
-          <h3>Mensuração de campanhas e disparos de CRM</h3>
-          <dl>
-            <dt>Desafio</dt>
-            <dd>Saber quais campanhas e disparos de WhatsApp realmente geravam vendas e retorno sobre o investimento.</dd>
-            <dt>Abordagem</dt>
-            <dd>Segmentação das bases de clientes, mensuração do funil de alcance, engajamento e conversão, e testes A/B com testes de hipóteses para comparar mensagens e públicos.</dd>
-            <dt>Resultado</dt>
-            <dd class="resultado">Relatórios de rentabilidade e ROI por ação, usados para otimizar a performance das campanhas seguintes.</dd>
-          </dl>
-        </div>
-      </article>
-
-      <article class="caso">
-        <div class="caso-meta">
-          <strong>Haytek</strong>
-          Planejamento Comercial, 2025
-          <p class="ferramentas">TOTVS Protheus, Power Query, Power Pivot, Looker Studio</p>
-        </div>
-        <div>
-          <h3>Forecast anual e desdobramento de metas</h3>
-          <dl>
-            <dt>Desafio</dt>
-            <dd>Planejar as vendas do ano considerando histórico, estoque e capacidade de laboratório.</dd>
-            <dt>Abordagem</dt>
-            <dd>Modelo de previsão a partir do histórico de faturamento e volume, com desdobramento das metas por filial, gerente e estado, e acompanhamento de previsto x realizado das despesas comerciais.</dd>
-            <dt>Resultado</dt>
-            <dd class="resultado">Metas claras para cada nível da operação e dashboards gerenciais para o acompanhamento da gestão.</dd>
-          </dl>
-        </div>
-      </article>
-
-      <article class="caso">
-        <div class="caso-meta">
-          <strong>Grupo Pratica</strong>
-          Business Intelligence, 2023–2025
-          <p class="ferramentas">Power BI, Power Query, Excel</p>
-        </div>
-        <div>
-          <h3>Dashboard de satisfação do cliente</h3>
-          <dl>
-            <dt>Desafio</dt>
-            <dd>Entender os motivos de insatisfação do principal cliente e agir sobre eles rapidamente.</dd>
-            <dt>Abordagem</dt>
-            <dd>Consolidação das avaliações em um dashboard em Power BI, com análise dos pontos críticos e apoio à construção de um plano de ação.</dd>
-            <dt>Resultado</dt>
-            <dd class="resultado">Aumento de aproximadamente 10% na satisfação do principal cliente em um mês.</dd>
-          </dl>
-        </div>
-      </article>
-
-      <article class="caso">
-        <div class="caso-meta">
-          <strong>Grupo LLE</strong>
-          Gestão de produtos, 2025–2026
-          <p class="ferramentas">SQL, séries temporais, Excel, PowerPoint</p>
-        </div>
-        <div>
-          <h3>Ciclo de vida de novos produtos</h3>
-          <dl>
-            <dt>Desafio</dt>
-            <dd>Avaliar se os produtos recém-lançados estavam amadurecendo como o esperado.</dd>
-            <dt>Abordagem</dt>
-            <dd>Análise de séries temporais de vendas ao longo do Ciclo de Vida do Produto, comparando marcas, vendedores e canais.</dd>
-            <dt>Resultado</dt>
-            <dd class="resultado">Diagnóstico de maturidade de cada item, embasando decisões de posicionamento de mercado.</dd>
-          </dl>
-        </div>
-      </article>
-
-      <article class="caso">
-        <div class="caso-meta">
-          <strong>Grupo LLE</strong>
-          Automação, 2025–2026
-          <p class="ferramentas">Claude (IA generativa), engenharia de prompts, Power Query</p>
-        </div>
-        <div>
-          <h3>Automação de relatórios com IA generativa</h3>
-          <dl>
-            <dt>Desafio</dt>
-            <dd>Reduzir o tempo gasto em tarefas manuais e repetitivas de preparação de bases e relatórios.</dd>
-            <dt>Abordagem</dt>
-            <dd>Uso estruturado do Claude, com projetos, artefatos e prompts padronizados para gerar e segmentar bases de clientes, montar relatórios e apresentações e revisar análises.</dd>
-            <dt>Resultado</dt>
-            <dd class="resultado">Entregas recorrentes padronizadas, com menos processamento manual e mais tempo para a análise.</dd>
-          </dl>
-        </div>
-      </article>
-
-      <!-- MODELO DE NOVO CASO (remova os marcadores de comentário para usar)
-      <article class="caso">
-        <div class="caso-meta">
-          <strong>Nome da empresa ou projeto pessoal</strong>
-          Área, ano
-          <p class="ferramentas">Ferramentas usadas</p>
-        </div>
-        <div>
-          <h3>Título do caso</h3>
-          <dl>
-            <dt>Desafio</dt><dd>Qual problema precisava ser resolvido.</dd>
-            <dt>Abordagem</dt><dd>O que foi feito e como.</dd>
-            <dt>Resultado</dt><dd class="resultado">O que mudou. <a href="https://link-do-projeto">Ver projeto</a></dd>
-          </dl>
-        </div>
-      </article>
-      -->
-
-    </div>
+    <h2>Projetos</h2>
+    <p class="intro">Dashboards, planilhas, códigos e estudos analíticos desenvolvidos com dados públicos ou fictícios.</p>
+    <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por tipo"></div>
+    <div class="projetos" id="lista-projetos" aria-live="polite"></div>
+    <div class="links-externos" id="links-externos"></div>
   </div>
 </section>
 
 <!-- ===================== TRAJETÓRIA =====================
-     O gráfico é montado a partir da lista "trajetoria" no script no fim da página.
-     Para incluir ou alterar uma experiência, edite somente essa lista.
+     A linha do tempo é montada a partir da lista "trajetoria" no script no fim da página.
+     Cada experiência pode ter casos (campo "casos"), que aparecem como blocos expansíveis.
 -->
 <section id="trajetoria">
   <div class="wrap">
     <h2>Trajetória</h2>
-    <p class="intro">Do Trade Marketing e do Planejamento Comercial até a área de Dados. Selecione uma linha para ver os detalhes.</p>
+    <p class="intro">Do Trade Marketing e do Planejamento Comercial até a área de Dados, com os casos reais de cada experiência, descritos sem dados confidenciais das empresas.</p>
     <ul class="legenda">
       <li><i style="background:var(--dados)"></i>Dados e BI</li>
-      <li><i style="background:var(--comercial)"></i>Planejamento e comercial</li>
-      <li><i style="background:var(--outros)"></i>Outras experiências</li>
-      <li><i style="background:var(--formacao)"></i>Formação</li>
+      <li><i style="background:var(--comercial)"></i>Planejamento comercial</li>
+      <li><i style="background:var(--marketing)"></i>Marketing</li>
     </ul>
-    <div class="gantt-rolagem">
-      <div class="gantt" id="gantt"></div>
-    </div>
-    <div class="detalhe" id="detalhe" aria-live="polite"></div>
+    <ol class="linha-tempo" id="linha-tempo"></ol>
   </div>
 </section>
 
@@ -444,15 +344,27 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
 <section id="contato" class="contato">
   <div class="wrap">
     <h2>Contato</h2>
-    <p class="grande">Vamos conversar sobre como dados podem apoiar as decisões da sua equipe.</p>
-    <p class="intro">Duque de Caxias, Rio de Janeiro</p>
-    <div class="acoes">
-      <a class="botao cheio" href="mailto:olsmatheus@gmail.com">olsmatheus@gmail.com</a>
-      <a class="botao" href="https://www.linkedin.com/in/matheusoliveira-adm" target="_blank" rel="noopener">LinkedIn</a>
-      <!-- Para oferecer o currículo, coloque o arquivo "curriculo.pdf" na mesma pasta e remova os marcadores de comentário:
-      <a class="botao" href="curriculo.pdf" download>Baixar currículo</a>
-      -->
+    <p class="grande">Busco novas oportunidades em Dados, BI e Marketing Analytics.</p>
+    <p class="intro">Moro em Duque de Caxias, no Rio de Janeiro, e estou aberto tanto a uma contratação efetiva quanto a projetos com escopo definido.</p>
+    <div class="caminhos">
+      <div class="caminho">
+        <h3>Vagas CLT</h3>
+        <p>Para empresas que buscam Analista de Dados, Analista de BI ou Analista de Marketing Analytics para compor a equipe.</p>
+        <a class="botao cheio" href="mailto:olsmatheus@gmail.com?subject=Oportunidade%20CLT%20-%20Portf%C3%B3lio">Falar sobre uma vaga</a>
+      </div>
+      <div class="caminho">
+        <h3>Projetos como PJ</h3>
+        <p>Dashboards, automação de relatórios, estruturação de bases de dados e análise de campanhas, com escopo e prazo combinados.</p>
+        <a class="botao" href="mailto:olsmatheus@gmail.com?subject=Projeto%20PJ%20-%20Portf%C3%B3lio">Propor um projeto</a>
+      </div>
     </div>
+    <p class="canais">
+      <span>E-mail: <a href="mailto:olsmatheus@gmail.com">olsmatheus@gmail.com</a></span>
+      <span>LinkedIn: <a href="https://www.linkedin.com/in/matheusoliveira-adm" target="_blank" rel="noopener">matheusoliveira-adm</a></span>
+      <!-- Para oferecer o currículo, coloque o arquivo "curriculo.pdf" na mesma pasta e remova os marcadores de comentário:
+      <span><a href="curriculo.pdf" download>Baixar currículo (PDF)</a></span>
+      -->
+    </p>
   </div>
 </section>
 
@@ -464,39 +376,92 @@ h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; lette
 
 <script>
 /* =========================================================
-   DADOS DA TRAJETÓRIA
-   area: "dados", "comercial", "outros" ou "formacao"
+   LINKS EXTERNOS
+   Preencha quando tiver os perfis. Links vazios não aparecem no site.
+   ========================================================= */
+const links = {
+  medium: "",   /* ex.: "https://medium.com/@seuusuario" */
+  github: ""    /* ex.: "https://github.com/seuusuario" */
+};
+
+/* =========================================================
+   PROJETOS
+   tipo: "dashboard", "planilha", "codigo" ou "artigo"
+   imagem: opcional, caminho de um print (ex.: "imagens/vendas.png")
+   Use apenas dados públicos ou fictícios.
+
+   Exemplo (copie, remova os marcadores de comentário e preencha):
+   {
+     titulo: "Painel de vendas de e-commerce",
+     tipo: "dashboard",
+     data: "2026-11",
+     resumo: "Análise de faturamento, ticket médio e recorrência de clientes.",
+     ferramentas: "Power BI, DAX, Power Query",
+     link: "https://app.powerbi.com/view?r=...",
+     imagem: "imagens/painel-vendas.png"
+   },
+   ========================================================= */
+const projetos = [
+];
+
+/* =========================================================
+   TRAJETÓRIA
+   area: "dados", "comercial" ou "marketing"
    inicio e fim no formato "AAAA-MM"
+   casos: opcional, lista de { titulo, desafio, abordagem, resultado }
    ========================================================= */
 const trajetoria = [
   { empresa: "Grupo LLE", cargo: "Analista de Dados de Marketing", area: "dados", inicio: "2025-11", fim: "2026-09",
     destaques: [
       "Extração e modelagem de grandes volumes de dados via SQL (PostgreSQL) e automação de ETL com Power Query.",
-      "Mensuração de campanhas, disparos de CRM via WhatsApp e ações promocionais: alcance, engajamento, conversão, rentabilidade e ROI.",
-      "Testes A/B e testes de hipóteses para validar cenários e otimizar campanhas.",
       "Modelagem de metas mensais para campanhas internas de marcas, com acompanhamento de meta x realizado.",
-      "Análise de novos produtos ao longo do Ciclo de Vida do Produto, com séries temporais de vendas.",
-      "Automação de bases, relatórios e apresentações com IA generativa (Claude)."
+      "Apuração de ações promocionais, campanhas sazonais e semanas temáticas.",
+      "Apresentações executivas em PowerPoint com data storytelling para a liderança."
+    ],
+    casos: [
+      { titulo: "Mensuração de campanhas e disparos de CRM",
+        desafio: "Saber quais campanhas e disparos de WhatsApp realmente geravam vendas e retorno sobre o investimento.",
+        abordagem: "Segmentação das bases de clientes, mensuração do funil de alcance, engajamento e conversão, e testes A/B com testes de hipóteses para comparar mensagens e públicos.",
+        resultado: "Relatórios de rentabilidade e ROI por ação, usados para otimizar a performance das campanhas seguintes." },
+      { titulo: "Ciclo de vida de novos produtos",
+        desafio: "Avaliar se os produtos recém-lançados estavam amadurecendo como o esperado.",
+        abordagem: "Análise de séries temporais de vendas ao longo do Ciclo de Vida do Produto, comparando marcas, vendedores e canais.",
+        resultado: "Diagnóstico de maturidade de cada item, embasando decisões de posicionamento de mercado." },
+      { titulo: "Automação de relatórios com IA generativa",
+        desafio: "Reduzir o tempo gasto em tarefas manuais e repetitivas de preparação de bases e relatórios.",
+        abordagem: "Uso estruturado do Claude, com projetos, artefatos e prompts padronizados para gerar e segmentar bases de clientes, montar relatórios e apresentações e revisar análises.",
+        resultado: "Entregas recorrentes padronizadas, com menos processamento manual e mais tempo para a análise." }
     ] },
   { empresa: "Grupo Pratica", cargo: "Consultor de Dados", area: "dados", inicio: "2025-05", fim: "2025-11",
     destaques: [
       "Processos de ETL no Power Query, dashboards em Power BI e relatórios analíticos em Excel.",
       "Relatórios financeiros, análises de caixa e direcionamento das análises de NPS (satisfação e lealdade dos clientes).",
-      "Apresentação de análises e recomendações diretamente às lideranças."
+      "Apresentação de análises e recomendações diretamente às lideranças.",
+      "Suporte à implementação de sistemas, com estruturação e organização dos dados."
     ] },
   { empresa: "Haytek", cargo: "Assistente de Planejamento Comercial e Dados", area: "comercial", inicio: "2025-05", fim: "2025-10",
     destaques: [
-      "Forecast anual de vendas com desdobramento de metas por filial, gerente e estado.",
       "Orçamento do setor comercial e acompanhamento de previsto x realizado das despesas.",
       "Dados do TOTVS Protheus tratados em Power Query e Power Pivot, com dashboards no Looker Studio.",
       "Apresentações executivas para reuniões estratégicas e convenções de vendas."
+    ],
+    casos: [
+      { titulo: "Forecast anual e desdobramento de metas",
+        desafio: "Planejar as vendas do ano considerando histórico, estoque e capacidade de laboratório.",
+        abordagem: "Modelo de previsão a partir do histórico de faturamento e volume e das projeções de estoque e laboratório, com desdobramento das metas por filial, gerente e estado.",
+        resultado: "Metas claras para cada nível da operação e dashboards gerenciais para o acompanhamento da gestão." }
     ] },
   { empresa: "Grupo Pratica", cargo: "Assistente de Dados", area: "dados", inicio: "2023-08", fim: "2025-04",
     destaques: [
       "Dashboards em Power BI para Departamento Pessoal, Recursos Humanos, Financeiro e Logística.",
-      "Dashboard de satisfação do cliente que contribuiu para um aumento de aproximadamente 10% na satisfação do principal cliente em um mês.",
       "Relatórios financeiros, análises de caixa e orçamentos por unidade.",
       "Mapeamento de processos em BPMN (Bizagi Modeler) e apoio à implementação da ISO 9001."
+    ],
+    casos: [
+      { titulo: "Dashboard de satisfação do cliente",
+        desafio: "Entender os motivos de insatisfação do principal cliente e agir sobre eles rapidamente.",
+        abordagem: "Consolidação das avaliações em um dashboard em Power BI, com análise dos pontos críticos e apoio à construção de um plano de ação.",
+        resultado: "Aumento de aproximadamente 10% na satisfação do principal cliente em um mês." }
     ] },
   { empresa: "Grupo Pratica", cargo: "Assistente Comercial", area: "comercial", inicio: "2023-05", fim: "2023-07",
     destaques: [
@@ -516,25 +481,26 @@ const trajetoria = [
       "Apoio ao orçamento anual e ao S&OP (planejamento integrado de vendas e operações).",
       "Apuração de premiações e elaboração do sumário executivo apresentado ao Conselho."
     ] },
-  { empresa: "Limppano", cargo: "Estagiário de Trade Marketing", area: "comercial", inicio: "2021-04", fim: "2021-10",
+  { empresa: "Limppano", cargo: "Estagiário de Trade Marketing", area: "marketing", inicio: "2021-04", fim: "2021-10",
     destaques: [
       "Apuração mensal de verbas comerciais com grandes redes de clientes e de comissões de representantes.",
-      "Controle de despesas da equipe de vendas e lançamentos nos ERPs TOTVS RM e Sankhya."
-    ] },
-  { empresa: "Agillicred", cargo: "Correspondente bancário", area: "outros", inicio: "2020-12", fim: "2021-03",
-    destaques: [ "Venda de crédito consignado, análise de crédito e negociação de condições." ] },
-  { empresa: "João Barbosa Advogados", cargo: "Estagiário jurídico-administrativo", area: "outros", inicio: "2019-09", fim: "2020-12",
-    destaques: [ "Cadastro e controle de sinistros judiciais em sistema e em planilhas Excel." ] },
-  { empresa: "Universidade Paulista", cargo: "Bacharelado em Administração", area: "formacao", inicio: "2019-03", fim: "2022-12",
-    destaques: [ "Formação em gestão, que fundamenta a leitura de negócio por trás de cada análise." ] }
+      "Controle de despesas das equipes de vendas e merchandising, com lançamentos nos ERPs TOTVS RM e Sankhya."
+    ] }
 ];
-
-/* Período exibido no gráfico */
-const ANO_INICIAL = 2019, ANO_FINAL = 2027;
 
 /* ---------- A partir daqui, não é preciso editar ---------- */
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-const cores = { dados: "var(--dados)", comercial: "var(--comercial)", outros: "var(--outros)", formacao: "var(--formacao)" };
+const AREAS = {
+  dados: { nome: "Dados e BI", cor: "var(--dados)" },
+  comercial: { nome: "Planejamento comercial", cor: "var(--comercial)" },
+  marketing: { nome: "Marketing", cor: "var(--marketing)" }
+};
+const TIPOS = {
+  dashboard: { nome: "Dashboard", plural: "Dashboards", acao: "Abrir dashboard" },
+  planilha: { nome: "Planilha", plural: "Planilhas", acao: "Abrir planilha" },
+  codigo: { nome: "Código", plural: "Códigos", acao: "Ver código" },
+  artigo: { nome: "Artigo", plural: "Artigos", acao: "Ler artigo" }
+};
 const indice = s => { const [a, m] = s.split("-").map(Number); return a * 12 + (m - 1); };
 const formatar = s => { const [a, m] = s.split("-").map(Number); return MESES[m - 1] + "/" + a; };
 function duracao(inicio, fim) {
@@ -544,46 +510,76 @@ function duracao(inicio, fim) {
   return partes.join(" e ");
 }
 
-const total = (ANO_FINAL - ANO_INICIAL) * 12, base = ANO_INICIAL * 12;
-const gantt = document.getElementById("gantt"), detalhe = document.getElementById("detalhe");
-
-let eixo = '<div class="g-eixo" aria-hidden="true"><span></span><div class="anos">';
-for (let a = ANO_INICIAL; a < ANO_FINAL; a++) {
-  eixo += '<span style="left:' + ((a - ANO_INICIAL) * 12 + 6) / total * 100 + '%">' + a + '</span>';
-}
-gantt.innerHTML = eixo + "</div></div>";
-
-trajetoria.forEach((item, i) => {
-  const esquerda = (indice(item.inicio) - base) / total * 100;
-  const largura = (indice(item.fim) + 1 - indice(item.inicio)) / total * 100;
-  const linha = document.createElement("button");
-  linha.type = "button";
-  linha.className = "g-linha";
-  linha.style.color = cores[item.area];
-  linha.setAttribute("aria-pressed", "false");
-  linha.setAttribute("aria-label", item.cargo + ", " + item.empresa + ", " + formatar(item.inicio) + " a " + formatar(item.fim));
-  linha.innerHTML =
-    '<span class="g-rotulo"><strong style="color:var(--tinta)">' + item.empresa + '</strong><small>' + item.cargo + '</small></span>' +
-    '<span class="g-trilho"><span class="g-barra" style="left:' + esquerda + '%;width:' + largura + '%;background:' + cores[item.area] + ';animation-delay:' + (i * 60) + 'ms"></span></span>';
-  linha.addEventListener("click", () => selecionar(i));
-  gantt.appendChild(linha);
+/* Linha do tempo */
+const linhaTempo = document.getElementById("linha-tempo");
+trajetoria.forEach(item => {
+  const area = AREAS[item.area];
+  const casos = (item.casos || []).map(c =>
+    '<details class="caso"><summary>' + c.titulo + '</summary><dl>' +
+    '<dt>Desafio</dt><dd>' + c.desafio + '</dd>' +
+    '<dt>Abordagem</dt><dd>' + c.abordagem + '</dd>' +
+    '<dt>Resultado</dt><dd class="resultado">' + c.resultado + '</dd></dl></details>'
+  ).join("");
+  const li = document.createElement("li");
+  li.className = "marco";
+  li.style.setProperty("--cor", area.cor);
+  li.innerHTML =
+    '<div class="quando"><strong>' + formatar(item.inicio) + " – " + formatar(item.fim) + '</strong><span>' + duracao(item.inicio, item.fim) + '</span></div>' +
+    '<div class="eixo" aria-hidden="true"><span class="ponto"></span></div>' +
+    '<div class="conteudo"><p class="area">' + area.nome + '</p><h3>' + item.cargo + '</h3><p class="empresa">' + item.empresa + '</p>' +
+    '<ul>' + item.destaques.map(d => "<li>" + d + "</li>").join("") + '</ul>' + casos + '</div>';
+  linhaTempo.appendChild(li);
 });
 
-function selecionar(i) {
-  const item = trajetoria[i];
-  gantt.querySelectorAll(".g-linha").forEach((b, j) => {
-    b.setAttribute("aria-pressed", String(j === i));
-    b.querySelector("strong").style.color = j === i ? cores[item.area] : "var(--tinta)";
-  });
-  detalhe.style.setProperty("--cor-detalhe", cores[item.area]);
-  detalhe.innerHTML =
-    "<h3>" + item.cargo + "</h3>" +
-    '<p class="periodo">' + item.empresa + ", de " + formatar(item.inicio) + " a " + formatar(item.fim) + " (" + duracao(item.inicio, item.fim) + ")</p>" +
-    "<ul>" + item.destaques.map(d => "<li>" + d + "</li>").join("") + "</ul>";
+/* Projetos */
+const listaProjetos = document.getElementById("lista-projetos");
+const filtros = document.getElementById("filtros");
+const ordenados = [...projetos].sort((a, b) => (b.data || "").localeCompare(a.data || ""));
+const tiposUsados = Object.keys(TIPOS).filter(t => projetos.some(p => p.tipo === t));
+
+function mostrarProjetos(tipo) {
+  const itens = tipo === "todos" ? ordenados : ordenados.filter(p => p.tipo === tipo);
+  if (!itens.length) {
+    listaProjetos.innerHTML =
+      '<div class="vazio"><h3>Primeiros projetos em produção</h3>' +
+      '<p>Em breve, esta seção reunirá dashboards, planilhas, códigos e estudos analíticos publicados no Medium. Enquanto isso, a trajetória mostra os casos reais de cada experiência.</p>' +
+      '<p class="tipos"><a href="#trajetoria">Ver casos na trajetória</a></p></div>';
+    return;
+  }
+  listaProjetos.innerHTML = itens.map(p => {
+    const t = TIPOS[p.tipo] || { nome: p.tipo, acao: "Abrir" };
+    return '<article class="projeto">' +
+      (p.imagem ? '<img class="imagem" src="' + p.imagem + '" alt="Imagem do projeto ' + p.titulo + '" loading="lazy">' : "") +
+      '<p class="tipo">' + t.nome + (p.data ? ", " + formatar(p.data) : "") + '</p>' +
+      '<h3>' + p.titulo + '</h3><p>' + p.resumo + '</p>' +
+      (p.ferramentas ? '<p class="ferramentas">' + p.ferramentas + '</p>' : "") +
+      (p.link ? '<a class="abrir" href="' + p.link + '" target="_blank" rel="noopener">' + t.acao + '</a>' : "") +
+      '</article>';
+  }).join("");
 }
 
-selecionar(0);
-requestAnimationFrame(() => document.body.classList.add("carregado"));
+if (tiposUsados.length > 1) {
+  ["todos", ...tiposUsados].forEach((t, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = t === "todos" ? "Todos" : TIPOS[t].plural;
+    b.setAttribute("aria-pressed", String(i === 0));
+    b.addEventListener("click", () => {
+      filtros.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      mostrarProjetos(t);
+    });
+    filtros.appendChild(b);
+  });
+} else {
+  filtros.remove();
+}
+mostrarProjetos("todos");
+
+const externos = document.getElementById("links-externos");
+if (links.medium) externos.innerHTML += '<a class="botao" href="' + links.medium + '" target="_blank" rel="noopener">Artigos no Medium</a>';
+if (links.github) externos.innerHTML += '<a class="botao" href="' + links.github + '" target="_blank" rel="noopener">Códigos no GitHub</a>';
+if (!externos.innerHTML) externos.remove();
+
 document.getElementById("ano").textContent = new Date().getFullYear();
 </script>
 </body>
